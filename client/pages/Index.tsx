@@ -5,6 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Scale, FileText, Phone, Mail, MapPin, Shield, Users, Clock } from "lucide-react";
 import { useState } from "react";
+import { toast } from "sonner";
 
 export default function Index() {
   const [formData, setFormData] = useState({
@@ -27,6 +28,14 @@ export default function Index() {
       ...prev,
       [e.target.name]: e.target.value
     }));
+  };
+
+  const handleAskQuestion = () => {
+    toast.success("Thank you for your question! Our experts will get back to you soon.");
+  };
+
+  const handleUploadDocument = () => {
+    toast.success("Document received! We will review and respond shortly.");
   };
 
   return (
@@ -60,11 +69,11 @@ export default function Index() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button size="lg" className="text-lg px-8 py-6 min-w-[220px]">
+            <Button size="lg" className="text-lg px-8 py-6 min-w-[220px]" onClick={handleAskQuestion}>
               <FileText className="mr-2 h-5 w-5" />
               Ask a Legal Question
             </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 py-6 min-w-[220px] border-2 border-primary text-primary hover:bg-primary hover:text-white">
+            <Button variant="outline" size="lg" className="text-lg px-8 py-6 min-w-[220px] border-2 border-primary text-primary hover:bg-primary hover:text-white" onClick={handleUploadDocument}>
               <Scale className="mr-2 h-5 w-5" />
               Upload Document
             </Button>
