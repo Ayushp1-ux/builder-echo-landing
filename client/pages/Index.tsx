@@ -37,7 +37,7 @@ export default function Index() {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <Scale className="h-8 w-8 text-primary" />
-              <span className="text-2xl font-bold text-gray-900">NyaySetu</span>
+              <span className="text-2xl font-bold text-gray-900">NyayaPath</span>
             </div>
             <nav className="hidden md:flex items-center space-x-6">
               <a href="#services" className="text-gray-600 hover:text-primary transition-colors">Services</a>
@@ -75,7 +75,7 @@ export default function Index() {
       {/* Features */}
       <section id="services" className="py-16 px-4 bg-white">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Why Choose NyaySetu?</h2>
+          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Why Choose NyayaPath?</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardHeader>
@@ -133,7 +133,7 @@ export default function Index() {
                 <Mail className="h-6 w-6 text-primary" />
                 <div>
                   <h3 className="font-semibold">Email</h3>
-                  <p className="text-gray-600">help@nyaysetu.com</p>
+                  <p className="text-gray-600">help@nyayapath.com</p>
                 </div>
               </div>
               
@@ -216,9 +216,9 @@ export default function Index() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center space-x-2 mb-4 md:mb-0">
               <Scale className="h-6 w-6" />
-              <span className="text-xl font-bold">NyaySetu</span>
+              <span className="text-xl font-bold">NyayaPath</span>
             </div>
-            <p className="text-gray-400">© 2024 NyaySetu. All rights reserved.</p>
+            <p className="text-gray-400">© 2024 NyayaPath. All rights reserved.</p>
           </div>
         </div>
       </footer>
