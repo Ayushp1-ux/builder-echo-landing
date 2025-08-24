@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+import { Link } from "react-router-dom";
 
 export default function Index() {
   const [formData, setFormData] = useState({
@@ -32,14 +33,12 @@ export default function Index() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
     console.log("Form submitted:", formData);
-    // Reset form
     setFormData({ name: "", email: "", phone: "", message: "" });
   };
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setFormData((prev) => ({
       ...prev,
@@ -49,7 +48,7 @@ export default function Index() {
 
   const handleAskQuestion = () => {
     toast.success(
-      "Thank you for your question! Our experts will get back to you soon.",
+      "Thank you for your question! Our experts will get back to you soon."
     );
   };
 
@@ -65,9 +64,7 @@ export default function Index() {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <Scale className="h-8 w-8 text-primary" />
-              <span className="text-2xl font-bold text-gray-900">
-                NyayaPath
-              </span>
+              <span className="text-2xl font-bold text-gray-900">NyayaPath</span>
             </div>
             <nav className="hidden md:flex items-center space-x-6">
               <a
@@ -106,23 +103,25 @@ export default function Index() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button
-              size="lg"
-              className="text-lg px-8 py-6 min-w-[220px]"
-              onClick={handleAskQuestion}
-            >
-              <FileText className="mr-2 h-5 w-5" />
-              Ask a Legal Question
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="text-lg px-8 py-6 min-w-[220px] border-2 border-primary text-primary hover:bg-primary hover:text-white"
-              onClick={handleUploadDocument}
-            >
-              <Scale className="mr-2 h-5 w-5" />
-              Upload Document
-            </Button>
+            {/* Wrapped in Link to /ask-question */}
+            <Link to="/ask-question">
+              <Button size="lg" className="text-lg px-8 py-6 min-w-[220px]">
+                <FileText className="mr-2 h-5 w-5" />
+                Ask a Legal Question
+              </Button>
+            </Link>
+
+            {/* Wrapped in Link to /ai-assistant (replaces upload-document) */}
+            <Link to="/ai-assistant">
+              <Button
+                variant="outline"
+                size="lg"
+                className="text-lg px-8 py-6 min-w-[220px] border-2 border-primary text-primary hover:bg-primary hover:text-white"
+              >
+                <Scale className="mr-2 h-5 w-5" />
+                Ask AI Legal Assistant
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -144,7 +143,6 @@ export default function Index() {
                 </CardDescription>
               </CardHeader>
             </Card>
-
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardHeader>
                 <Clock className="h-12 w-12 text-primary mx-auto mb-4" />
@@ -155,7 +153,6 @@ export default function Index() {
                 </CardDescription>
               </CardHeader>
             </Card>
-
             <Card className="text-center hover:shadow-lg transition-shadow">
               <CardHeader>
                 <Users className="h-12 w-12 text-primary mx-auto mb-4" />
@@ -177,9 +174,7 @@ export default function Index() {
       >
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Get In Touch
-            </h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Get In Touch</h2>
             <p className="text-gray-600">
               Have questions? We'd love to hear from you. Send us a message and
               we'll respond as soon as possible.
@@ -209,73 +204,61 @@ export default function Index() {
                 <MapPin className="h-6 w-6 text-primary" />
                 <div>
                   <h3 className="font-semibold">Office</h3>
-                  <p className="text-gray-600">
-                    123 Legal District, New Delhi, India
-                  </p>
+                  <p className="text-gray-600">123 Legal District, New Delhi, India</p>
                 </div>
               </div>
             </div>
 
             {/* Contact Form */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Send us a message</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <Label htmlFor="name">Name</Label>
-                      <Input
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        required
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="phone">Phone</Label>
-                      <Input
-                        id="phone"
-                        name="phone"
-                        type="tel"
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <Label htmlFor="email">Email</Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="message">Message</Label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      rows={4}
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </div>
-
-                  <Button type="submit" className="w-full">
-                    Send Message
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <Label htmlFor="name">Name</Label>
+                  <Input
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="phone">Phone</Label>
+                  <Input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                  />
+                </div>
+              </div>
+              <div>
+                <Label htmlFor="email">Email</Label>
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div>
+                <Label htmlFor="message">Message</Label>
+                <Textarea
+                  id="message"
+                  name="message"
+                  rows={4}
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <Button type="submit" className="w-full">
+                Send Message
+              </Button>
+            </form>
           </div>
         </div>
       </section>
@@ -288,9 +271,7 @@ export default function Index() {
               <Scale className="h-6 w-6" />
               <span className="text-xl font-bold">NyayaPath</span>
             </div>
-            <p className="text-gray-400">
-              © 2024 NyayaPath. All rights reserved.
-            </p>
+            <p className="text-gray-400">© 2024 NyayaPath. All rights reserved.</p>
           </div>
         </div>
       </footer>
