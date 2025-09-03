@@ -20,7 +20,12 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
+          50: '#e0eaff',
+          100: '#b3c8ff',
+          DEFAULT: 'hsl(var(--primary))', // fallback
+          500: '#3366FF',
+          600: '#2a54e4',
+          700: '#1e3dbd',
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
@@ -36,7 +41,7 @@ export default {
           foreground: "hsl(var(--muted-foreground))",
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
+          DEFAULT: "#ffa500",
           foreground: "hsl(var(--accent-foreground))",
         },
         popover: {
@@ -57,6 +62,9 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+      },
+      fontFamily: {
+        sans: ['Poppins', 'ui-sans-serif', 'system-ui'],  // Added Poppins here
       },
       borderRadius: {
         lg: "var(--radius)",

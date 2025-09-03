@@ -12,10 +12,12 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import AskQuestion from "./pages/AskQuestion";
 import Navbar from "./components/ui/Navbar";
-import MyQuestions from "./pages/MyQuestion";         // Corrected import name
+import MyQuestions from "./pages/MyQuestion";
 import LawyerDashboard from "./pages/LawyerDashboard";
-import PrivateRoute from "./components/ui/PrivateRoute";  // Import PrivateRoute
-import AIAssistant from "./pages/AIAssistant";           // Import the new AI Assistant page
+import PrivateRoute from "./components/ui/PrivateRoute";
+import AIAssistant from "./pages/AIAssistant";
+import CourtNewsPage from "./pages/CourtNewsPage";  // Existing import
+import CaseSearchPage from "./pages/CaseSearchPage"; // New import for case search
 
 const queryClient = new QueryClient();
 
@@ -33,7 +35,7 @@ const App = () => (
           <Route path="/my-questions" element={<MyQuestions />} />
           <Route path="/ask-question" element={<AskQuestion />} />
 
-          {/* Wrap LawyerDashboard with PrivateRoute to protect it */}
+          {/* Wrap LawyerDashboard with PrivateRoute */}
           <Route
             path="/lawyer"
             element={
@@ -43,10 +45,17 @@ const App = () => (
             }
           />
 
-          {/* New AI Assistant Route */}
+          {/* AI Assistant Route */}
           <Route path="/ai-assistant" element={<AIAssistant />} />
 
-          <Route path="*" element={<NotFound />} />          {/* Correct "*" */}
+          {/* Court News Page Route */}
+          <Route path="/court-news" element={<CourtNewsPage />} />
+
+          {/* New Case Search Page Route */}
+          <Route path="/case-search" element={<CaseSearchPage />} />
+
+          {/* Catch-all Not Found Route */}
+          <Route path="*" element={<NotFound />} />  
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
